@@ -21,14 +21,18 @@ public class Quick{
     return ans;
   }
   public static int quickselect(int[] data, int k){
-      int f = partition(data,0,data.length-1);
-      if(f==k){
-        return k;
-      }
-      if(f<k){
+      int i = 0;
+      int j = data.length-1;
+      while(i<j+1){
+        int f = partition(data,i,j);
+        if(f==k){
+          return k;
+        }
+        if(f<k){
+          return 0;
+        }
         return 0;
       }
-      return 0;
   }
   public static int partition(int [] data, int start, int end){
     if(data.length==1){
