@@ -28,11 +28,14 @@ public class Quick{
         if(f==k){
           return k;
         }
-        if(f<k){
-          return 0;
+        else if(f<k){
+          i=f+1;
         }
-        return 0;
+        else{
+          j=f-1;
+        }
       }
+      return -1;
   }
   public static int partition(int [] data, int start, int end){
     if(data.length==1){
