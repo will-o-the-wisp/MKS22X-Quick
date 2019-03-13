@@ -1,10 +1,16 @@
 import java.util.*;
 public class Quick{
   public static void main(String[] args){
-    int[][] dupe = new int[1000][1000];
-    int[] ans = new int[10000];
-    for(int i=0;i<1000;i++){
-      ans[i]=quickselect(dupe[i],i);
+    Random r = new Random();
+    int[] a = new int[(int)(1e6)];
+    for(int i=0;i<a.length;i++){
+      a[i]=r.nextInt();
+    }
+    if(args.length>0){
+      quicksort(a);
+    }
+    else{
+      Arrays.sort(a);
     }
   }
 
@@ -56,7 +62,6 @@ public class Quick{
     if(data.length==1){
       return 0;
     }
-    //System.out.println(arrayToString(data));
     int ind = start;
     int s=data[start];
     int m=data[(start+end)/2];
@@ -67,20 +72,16 @@ public class Quick{
     int[] choices = {s,m,e};
     for(int k=0;k<3;k++){
       if(choices[k]==s+m+e-max-min){
-        ind = choices[k];
+        ind = k;
       }
     }
     int p = data[ind];
-    //System.out.println(p);
     int i=start+1;
     int j=end;
     int temp = data[start];
     data[start]=p;
     data[ind]=temp;
-    //System.out.println(arrayToString(data));
     while(i<j+1){
-      //System.out.println(i+" "+j);
-      //System.out.println(arrayToString(data));
       if(data[i]>p||(data[i]==p&&r.nextInt(2)==1)){
         temp = data[i];
         data[i]=data[j];
@@ -94,7 +95,6 @@ public class Quick{
     temp = data[start];
     data[start]=data[i-1];
     data[i-1]=temp;
-    //System.out.println(arrayToString(data));
     return i-1;
   }
 }
