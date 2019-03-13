@@ -1,7 +1,11 @@
 import java.util.*;
 public class Quick{
   public static void main(String[] args){
-
+    int[][] dupe = new int[1000][1000];
+    int[] ans = new int[10000];
+    for(int i=0;i<1000;i++){
+      ans[i]=quickselect(dupe[i],i);
+    }
   }
 
 /*Modify the array such that:
@@ -42,8 +46,18 @@ public class Quick{
       return 0;
     }
     //System.out.println(arrayToString(data));
-    Random r = new Random();
-    int ind = start+r.nextInt(end-start+1);
+    int ind = start;
+    int s=data[start];
+    int m=data[(start+end)/2];
+    int e=data[end];
+    int max = Math.max(s,Math.max(m,e));
+    int min = Math.min(s,Math.min(m,e));
+    int[] choices = {s,m,e};
+    for(int k=0;k<3;i++){
+      if(choices[k]==s+m+e-max-min){
+        ind = choices[k];
+      }
+    }
     int p = data[ind];
     //System.out.println(p);
     int i=start+1;
