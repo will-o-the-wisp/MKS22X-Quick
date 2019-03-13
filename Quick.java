@@ -53,7 +53,7 @@ public class Quick{
     int max = Math.max(s,Math.max(m,e));
     int min = Math.min(s,Math.min(m,e));
     int[] choices = {s,m,e};
-    for(int k=0;k<3;i++){
+    for(int k=0;k<3;k++){
       if(choices[k]==s+m+e-max-min){
         ind = choices[k];
       }
