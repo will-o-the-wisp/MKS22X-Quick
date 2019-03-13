@@ -16,6 +16,17 @@ public class Quick{
  *4. all elements in range that are larger than the pivot element are placed after the pivot element.
  *@return the index of the final position of the pivot element.
  */
+ public static void quicksort(int[] data){
+   quicksortH(data,0,data.length-1);
+ }
+ public static void quicksortH(int [] data, int lo, int hi){
+   if(lo>=hi){
+     return;
+   }
+   int piv = partition(data,lo,hi);
+   quicksortH(data,lo,piv-1);
+   quicksortH(data,piv+1,hi);
+ }
   public static String arrayToString(int [] ary){
     String ans="";
     for(int i=0;i<ary.length;i++){
@@ -52,6 +63,7 @@ public class Quick{
     int e=data[end];
     int max = Math.max(s,Math.max(m,e));
     int min = Math.min(s,Math.min(m,e));
+    Random r = new Random();
     int[] choices = {s,m,e};
     for(int k=0;k<3;k++){
       if(choices[k]==s+m+e-max-min){
@@ -69,7 +81,7 @@ public class Quick{
     while(i<j+1){
       //System.out.println(i+" "+j);
       //System.out.println(arrayToString(data));
-      if(data[i]>p){
+      if(data[i]>p||(data[i]==p&&r.nextInt(2)==1)){
         temp = data[i];
         data[i]=data[j];
         data[j]=temp;
