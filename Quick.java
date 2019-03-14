@@ -70,10 +70,14 @@ public class Quick{
     int min = Math.min(s,Math.min(m,e));
     Random r = new Random();
     int[] choices = {s,m,e};
-    for(int k=0;k<3;k++){
-      if(choices[k]==s+m+e-max-min){
-        ind = k;
-      }
+    if(choices[0]==s+m+e-max-min){
+        ind = start;
+    }
+    else if(choices[1]==s+m+e-max-min){
+      ind = (start+end)/2;
+    }
+    else{
+      ind = end;
     }
     int p = data[ind];
     int i=start+1;
