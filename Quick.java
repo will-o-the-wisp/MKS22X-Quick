@@ -34,7 +34,20 @@ public class Quick{
     System.out.println();
   }
 }
-
+private static void insertionsort(int[] data, int lo, int hi){
+  int index=lo+1;
+  for(int i=index;i<hi+1;i++){
+    if(data[i-1]>data[i]){
+      int temp=data[i];
+      int j=i-1;
+      while(j>=lo&&temp<data[j]){
+          data[j+1]=data[j];
+          j--;
+      }
+      data[j+1]=temp;
+    }
+  }
+}
 /*Modify the array such that:
  *1. Only the indices from start to end inclusive are considered in range
  *2. A random index from start to end inclusive is chosen, the corresponding
@@ -47,7 +60,8 @@ public class Quick{
    quicksortH(data,0,data.length-1);
  }
  public static void quicksortH(int [] data, int lo, int hi){
-   if(lo>=hi){
+   if(hi-lo+1<50){
+     insertionsort(data,lo,hi);
      return;
    }
    int piv = partition(data,lo,hi);
